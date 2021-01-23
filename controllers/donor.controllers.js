@@ -25,8 +25,7 @@ module.exports.getAll = async (req, res, next) => {
 }
 
 module.exports.getByMobile = async (req, res, next) => {
-    const mobile = req.params.mobile;
-    console.log(mobile)
+    const mobile = req.params.mobile;    
     try {
       const donor = await donorService.getByMobile({ mobileNumber: mobile });
       return res.status(200).send(donor);
@@ -44,25 +43,11 @@ module.exports.updateById = async (req, res, next) => {
     const donor = await donorService.updateById({ _id: id }, updateFromBody, {
       new: true,
       runValidators: true,
-    });
-    console.log(donor); 
+    });    
     return res.status(200).send(donor);
   } catch (e) {
     console.error(e);
     return res.status(500).json({ message: "Something went wrong" });
   }
 };
-
-
-//   module.exports.deleteById = async (req, res, next) => {
-//     const id = req.params.id;
-//     try {
-//       const area = await areaService.deleteById({ _id: id });
-//       return res.status(200).send({data : true});
-//     } catch (e) {
-//       console.error(e);
-//       return res.status(500).json({ message: "Something went wrong" });
-//     }
-//   };
-
 

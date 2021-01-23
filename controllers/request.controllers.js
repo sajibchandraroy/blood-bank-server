@@ -1,7 +1,6 @@
 const requestService = require('../services/request.services');
 
-module.exports.create = async (req, res, next) => {
-  console.log(req.body)
+module.exports.create = async (req, res, next) => { 
   try {
     const request = await requestService.create(req.body);
     return res.status(200).json(request)
